@@ -19,7 +19,7 @@ const fillFormData = () => {
 };
 fillFormData();
 
-form.addEventListener('change', ({ target: formFieldEl }) => {
+form.addEventListener('input', ({ target: formFieldEl }) => {
     formData[formFieldEl.name] = formFieldEl.value.trim();
     localStorage.setItem('feedback-form-state', JSON.stringify(formData));
 });
@@ -35,4 +35,7 @@ form.addEventListener('submit', (event) => {
     console.log(formData);
     localStorage.removeItem('feedback-form-state');
     form.reset();
+    formData.email = '';
+    formData.message = '';
+
 });
